@@ -81,7 +81,9 @@ runSCENIC_3_scoreCells <- function(scenicOptions, exprMat,
     
     ### Save threshold info as text (e.g. to edit/modify...)
     trhAssignment <- getThresholdSelected(cells_AUCellThresholds)
-    trhAssignment <- signif(trhAssignment,3)
+    #trhAssignment <- signif(trhAssignment,3)
+    trhAssignment <- as.list(signif(unlist(trhAssignment), 3))
+
     commentsThresholds <- sapply(cells_AUCellThresholds, function(x) unname(x$aucThr$comment))
     
     table2edit <- cbind(regulon=names(trhAssignment),
